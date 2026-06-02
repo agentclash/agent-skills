@@ -48,9 +48,9 @@ for dir in "$SRC/challenge-pack-skills"/agentclash-*/; do
   copy_skill "$dir"
 done
 
-# Preserve hub skill (bundle-only, not in upstream web/content)
+# Preserve hub if missing after sync (hub also lives in upstream now)
 if [[ ! -f "$DST/agentclash-hub/SKILL.md" ]]; then
-  echo "  warning: agentclash-hub missing — restore from git" >&2
+  echo "  warning: agentclash-hub missing after sync" >&2
 fi
 
 bash "$SCRIPT_DIR/verify-bundle.sh"
