@@ -22,7 +22,11 @@
     "agentclash-scorecard-reader",
     "agentclash-compare-and-triage",
     "agentclash-regression-flywheel",
-    "agentclash-ci-release-gate"
+    "agentclash-ci-release-gate",
+    "agentclash-agent-harness-setup",
+    "agentclash-multi-turn-operator",
+    "agentclash-dataset-workflows",
+    "agentclash-prompt-eval-playground"
   ],
   "dependency_order": [
     "agentclash-hub",
@@ -43,7 +47,11 @@
     "agentclash-scorecard-reader",
     "agentclash-compare-and-triage",
     "agentclash-regression-flywheel",
-    "agentclash-ci-release-gate"
+    "agentclash-ci-release-gate",
+    "agentclash-agent-harness-setup",
+    "agentclash-multi-turn-operator",
+    "agentclash-dataset-workflows",
+    "agentclash-prompt-eval-playground"
   ],
   "hosts": {
     "claude": {

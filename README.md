@@ -82,7 +82,7 @@ After install, tell your agent to load **`agentclash-hub`** first. It includes:
 
 ## What's in the bundle
 
-19 skills synced from main docs (hub + P0 workflow skills included):
+23 skills synced from main docs (hub + P0/P1 workflow skills included):
 
 | Skill | Purpose |
 | --- | --- |
@@ -98,6 +98,10 @@ After install, tell your agent to load **`agentclash-hub`** first. It includes:
 | `agentclash-compare-and-triage` | Baselines, compare, replay triage |
 | `agentclash-regression-flywheel` | Regression promotion |
 | `agentclash-ci-release-gate` | CI gates |
+| `agentclash-agent-harness-setup` | E2B coding-agent harness tasks |
+| `agentclash-multi-turn-operator` | Human takeover in multi_turn packs |
+| `agentclash-dataset-workflows` | Dataset eval, gates, traces |
+| `agentclash-prompt-eval-playground` | Prompt eval YAML + playground |
 
 See `manifest.json` for the full list and dependency order.
 
