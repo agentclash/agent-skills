@@ -26,7 +26,9 @@
     "agentclash-agent-harness-setup",
     "agentclash-multi-turn-operator",
     "agentclash-dataset-workflows",
-    "agentclash-prompt-eval-playground"
+    "agentclash-prompt-eval-playground",
+    "agentclash-workspace-admin",
+    "agentclash-security-evaluation"
   ],
   "dependency_order": [
     "agentclash-hub",
@@ -51,7 +53,9 @@
     "agentclash-agent-harness-setup",
     "agentclash-multi-turn-operator",
     "agentclash-dataset-workflows",
-    "agentclash-prompt-eval-playground"
+    "agentclash-prompt-eval-playground",
+    "agentclash-workspace-admin",
+    "agentclash-security-evaluation"
   ],
   "hosts": {
     "claude": {
