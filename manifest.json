@@ -1,0 +1,76 @@
+{
+  "version": 1,
+  "bundle": "agentclash-skills",
+  "source_repo": "https://github.com/agentclash/agentclash",
+  "source_path": "web/content/agent-skills",
+  "skills": [
+    "agentclash-hub",
+    "agentclash-cli-setup",
+    "agentclash-runtime-resources-setup",
+    "agentclash-agent-build-author",
+    "agentclash-agent-deployment-setup",
+    "agentclash-challenge-pack-planner",
+    "agentclash-challenge-pack-yaml-author",
+    "agentclash-challenge-pack-input-sets",
+    "agentclash-challenge-pack-tools-sandbox",
+    "agentclash-challenge-pack-artifacts",
+    "agentclash-challenge-pack-scoring-validators",
+    "agentclash-challenge-pack-llm-judges",
+    "agentclash-challenge-pack-validation-publish",
+    "agentclash-eval-runner",
+    "agentclash-scorecard-reader",
+    "agentclash-regression-flywheel",
+    "agentclash-ci-release-gate"
+  ],
+  "dependency_order": [
+    "agentclash-hub",
+    "agentclash-cli-setup",
+    "agentclash-runtime-resources-setup",
+    "agentclash-agent-build-author",
+    "agentclash-agent-deployment-setup",
+    "agentclash-challenge-pack-planner",
+    "agentclash-challenge-pack-yaml-author",
+    "agentclash-challenge-pack-input-sets",
+    "agentclash-challenge-pack-tools-sandbox",
+    "agentclash-challenge-pack-artifacts",
+    "agentclash-challenge-pack-scoring-validators",
+    "agentclash-challenge-pack-llm-judges",
+    "agentclash-challenge-pack-validation-publish",
+    "agentclash-eval-runner",
+    "agentclash-scorecard-reader",
+    "agentclash-regression-flywheel",
+    "agentclash-ci-release-gate"
+  ],
+  "hosts": {
+    "claude": {
+      "display_name": "Claude Code",
+      "global_dir": ".claude/skills",
+      "project_dir": ".claude/skills"
+    },
+    "codex": {
+      "display_name": "OpenAI Codex CLI",
+      "global_dir": ".agents/skills",
+      "project_dir": ".agents/skills"
+    },
+    "cursor": {
+      "display_name": "Cursor",
+      "global_dir": ".cursor/skills",
+      "project_dir": ".cursor/skills"
+    },
+    "openclaw": {
+      "display_name": "OpenClaw",
+      "global_dir": ".openclaw/skills",
+      "project_dir": ".openclaw/skills"
+    },
+    "hermes": {
+      "display_name": "Hermes",
+      "global_dir": ".hermes/skills",
+      "project_dir": ".hermes/skills"
+    },
+    "opencode": {
+      "display_name": "OpenCode",
+      "global_dir": ".config/opencode/skills",
+      "project_dir": ".opencode/skills"
+    }
+  }
+}
