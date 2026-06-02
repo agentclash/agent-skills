@@ -1,6 +1,6 @@
 ---
 name: agentclash-hub
-description: Use when starting any AgentClash eval, CLI, or challenge-pack task. Load this skill first for the full workflow map, skill dependency order, product UI links, hosted defaults, and pointers to every other AgentClash skill in this bundle.
+description: Use when starting any AgentClash eval, CLI, or challenge-pack task. Load this skill first for the full workflow map, skill dependency order, product UI links, hosted defaults, and pointers to every other AgentClash skill.
 metadata:
   agentclash.role: hub
   agentclash.version: "1"
@@ -19,9 +19,9 @@ Give coding agents maximum context to run AgentClash evals through the CLI and g
 
 ## Do Not Use When
 - A narrower skill already matches (e.g. only CLI auth repair → `agentclash-cli-setup`).
-- The task is only to edit AgentClash product source code in `agentclash/agentclash`.
+- The task is only to edit AgentClash product source code in the monorepo.
 
-## Hosted Defaults
+## Environment
 Use production unless the user explicitly runs a local stack:
 
 ```bash
@@ -31,20 +31,30 @@ agentclash link
 agentclash quickstart
 ```
 
-Install the CLI: `npm i -g agentclash` or see https://agentclash.dev/docs/getting-started/quickstart
+Install the CLI: `npm i -g agentclash` or see `/docs-md/getting-started/quickstart`.
 
-## End-to-End Eval Workflow (CLI)
+Portable bundle install (copy skills to agent host): https://github.com/agentclash/agent-skills
+
+## Procedure
+1. Load this hub to pick the next skill.
+2. Run `agentclash quickstart` if CLI readiness is unknown.
+3. Follow dependency order for setup → pack → run → review → regression → CI.
+4. Send the user to the matching UI page when they need a visual surface.
+
+## End-To-End Eval Workflow (CLI)
 
 ```text
-1. agentclash-cli-setup          → auth, workspace, doctor
-2. agentclash-runtime-resources-setup → provider, model alias, runtime profile, secrets
-3. agentclash-agent-build-author → build spec + ready build version
-4. agentclash-agent-deployment-setup → deployment ID for runs
-5. challenge-pack skills         → plan, YAML, validate, publish pack
-6. agentclash-eval-runner        → eval start / run create / follow
-7. agentclash-scorecard-reader   → rankings, scorecards, replay, artifacts
-8. agentclash-regression-flywheel → promote failures, suite-only reruns
-9. agentclash-ci-release-gate    → CI manifest + gate (optional)
+1. agentclash-cli-setup              → auth, workspace, doctor
+2. agentclash-quickstart             → readiness checks + next command
+3. agentclash-runtime-resources-setup → provider, model alias, runtime profile, secrets
+4. agentclash-agent-build-author     → build spec + ready build version
+5. agentclash-agent-deployment-setup → deployment ID for runs
+6. challenge-pack skills             → plan, YAML, validate, publish pack
+7. agentclash-eval-runner            → eval start / run create / follow / sessions / series
+8. agentclash-scorecard-reader       → rankings, scorecards, replay, artifacts
+9. agentclash-compare-and-triage     → baseline, compare latest/gate, replay triage
+10. agentclash-regression-flywheel   → promote failures, suite-only reruns
+11. agentclash-ci-release-gate       → CI manifest + gate (optional)
 ```
 
 Human-friendly shortcut after setup:
@@ -62,30 +72,34 @@ agentclash replay triage
 Read skills in this order when multiple apply:
 
 1. `agentclash-hub` (this file)
-2. `agentclash-cli-setup`
-3. `agentclash-runtime-resources-setup`
-4. `agentclash-agent-build-author`
-5. `agentclash-agent-deployment-setup`
-6. `agentclash-challenge-pack-planner`
-7. `agentclash-challenge-pack-yaml-author`
-8. `agentclash-challenge-pack-input-sets`
-9. `agentclash-challenge-pack-tools-sandbox`
-10. `agentclash-challenge-pack-artifacts`
-11. `agentclash-challenge-pack-scoring-validators`
-12. `agentclash-challenge-pack-llm-judges`
-13. `agentclash-challenge-pack-validation-publish`
-14. `agentclash-eval-runner`
-15. `agentclash-scorecard-reader`
-16. `agentclash-regression-flywheel`
-17. `agentclash-ci-release-gate`
+2. `agentclash-skill-catalog` (when authoring or changing skills)
+3. `agentclash-cli-setup`
+4. `agentclash-quickstart`
+5. `agentclash-runtime-resources-setup`
+6. `agentclash-agent-build-author`
+7. `agentclash-agent-deployment-setup`
+8. `agentclash-challenge-pack-planner`
+9. `agentclash-challenge-pack-yaml-author`
+10. `agentclash-challenge-pack-input-sets`
+11. `agentclash-challenge-pack-tools-sandbox`
+12. `agentclash-challenge-pack-artifacts`
+13. `agentclash-challenge-pack-scoring-validators`
+14. `agentclash-challenge-pack-llm-judges`
+15. `agentclash-challenge-pack-validation-publish`
+16. `agentclash-eval-runner`
+17. `agentclash-scorecard-reader`
+18. `agentclash-compare-and-triage`
+19. `agentclash-regression-flywheel`
+20. `agentclash-ci-release-gate`
 
 Each skill folder name matches its `name` in frontmatter. When a skill lists **Related Skills**, load those before mutating remote state.
 
-## All Skills In This Bundle
+## All Skills In The Catalog
 
 | Skill folder | When to load |
 | --- | --- |
 | `agentclash-hub` | First — workflow map and UI links |
+| `agentclash-quickstart` | Readiness checks and suggested next command |
 | `agentclash-cli-setup` | Install, auth, workspace, doctor |
 | `agentclash-runtime-resources-setup` | Provider accounts, models, runtime profiles, secrets |
 | `agentclash-agent-build-author` | Agent build specs and build versions |
@@ -98,10 +112,13 @@ Each skill folder name matches its `name` in frontmatter. When a skill lists **R
 | `agentclash-challenge-pack-scoring-validators` | Validators |
 | `agentclash-challenge-pack-llm-judges` | LLM judges |
 | `agentclash-challenge-pack-validation-publish` | Validate and publish |
-| `agentclash-eval-runner` | Start and follow evals |
+| `agentclash-eval-runner` | Start and follow evals, sessions, series |
 | `agentclash-scorecard-reader` | Interpret results |
+| `agentclash-compare-and-triage` | Baselines, compare, replay triage |
 | `agentclash-regression-flywheel` | Promote failures to regression suites |
 | `agentclash-ci-release-gate` | CI/CD gates |
+
+Nested folders: `agent-build-skills/` and `challenge-pack-skills/` mirror the table rows above.
 
 ## Product UI — Where To Send The User
 
@@ -119,7 +136,7 @@ Base URL: **https://agentclash.dev**
 | Multi-turn packs | https://agentclash.dev/docs/challenge-packs/multi-turn |
 | Interpret results | https://agentclash.dev/docs/guides/interpret-results |
 | CI/CD gates | https://agentclash.dev/docs/guides/ci-cd-agent-gates |
-| Workspace runs (after login) | App dashboard → Runs list (use run ID from CLI in run detail URL when available) |
+| Workspace runs (after login) | App dashboard → Runs list |
 | Live run events | Run detail page while status is running |
 | Scorecards & comparisons | Run detail → scorecard / ranking views after completion |
 
@@ -135,9 +152,18 @@ Open https://agentclash.dev and navigate to your workspace runs, or search for r
 - **Input set** — which cases run in a given eval.
 - **Agent build / deployment** — the agent under test (model + runtime + tools).
 - **Run** — one execution of pack × input set × deployments.
-- **Eval session** — repeated runs (`eval start --repetitions N`).
+- **Eval session** — repeated runs (`eval start --repetitions N` or `run series create`).
 - **Scorecard** — structured results, comparisons, release gate input.
+- **Baseline bookmark** — workspace default run/agent for `compare latest`.
 - **Regression suite** — promoted failures for suite-only reruns.
+
+## Expected Output
+After loading this skill you can name the next skill, 1–3 CLI commands, and the UI page the human should open.
+
+## Failure Modes
+- Skipping `agentclash-cli-setup` when auth or workspace is unset → commands fail with workspace errors.
+- Running evals before pack publish → no runnable pack version.
+- Using localhost API URL by mistake → empty workspace or auth failures against the wrong backend.
 
 ## Safety Notes
 - Confirm before production-scale evals, publishes, or CI runs that spend budget.
@@ -157,7 +183,8 @@ Next commands: <1-3 commands>
 Load all skills listed in **Skill Dependency Order** as needed; start with `agentclash-cli-setup` if CLI is not configured.
 
 ## Related Docs
-- https://agentclash.dev/docs/agent-skills
-- https://agentclash.dev/docs-md/agent-skills
-- https://agentclash.dev/llms.txt
-- https://github.com/agentclash/agent-skills
+- `/docs-md/agent-skills`
+- `/docs-md/agent-skills/agentclash-hub`
+- `/docs-md/guides/use-with-ai-tools`
+- `/docs-md/getting-started/quickstart`
+- `/docs-md/getting-started/first-eval`
