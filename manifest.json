@@ -6,6 +6,7 @@
   "skills": [
     "agentclash-hub",
     "agentclash-cli-setup",
+    "agentclash-quickstart",
     "agentclash-runtime-resources-setup",
     "agentclash-agent-build-author",
     "agentclash-agent-deployment-setup",
@@ -19,12 +20,14 @@
     "agentclash-challenge-pack-validation-publish",
     "agentclash-eval-runner",
     "agentclash-scorecard-reader",
+    "agentclash-compare-and-triage",
     "agentclash-regression-flywheel",
     "agentclash-ci-release-gate"
   ],
   "dependency_order": [
     "agentclash-hub",
     "agentclash-cli-setup",
+    "agentclash-quickstart",
     "agentclash-runtime-resources-setup",
     "agentclash-agent-build-author",
     "agentclash-agent-deployment-setup",
@@ -38,6 +41,7 @@
     "agentclash-challenge-pack-validation-publish",
     "agentclash-eval-runner",
     "agentclash-scorecard-reader",
+    "agentclash-compare-and-triage",
     "agentclash-regression-flywheel",
     "agentclash-ci-release-gate"
   ],
