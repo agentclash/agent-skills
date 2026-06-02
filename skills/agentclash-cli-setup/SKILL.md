@@ -198,17 +198,14 @@ Next command: <single recommended command>
 Notes: <config precedence, local override, or token caveat if relevant>
 ```
 
-## Product UI
-After setup, send the user to https://agentclash.dev to sign in and open their workspace. Docs: https://agentclash.dev/docs/getting-started/quickstart
-
 ## Related Skills
-- `agentclash-hub` — full workflow map, skill dependency order, and UI links
-- `agentclash-runtime-resources-setup` — next step when provider/runtime resources are missing
-- `agentclash-eval-runner` — after setup passes and deployments exist
+- `agentclash-hub` — load first for full workflow map and UI links
+- `agentclash-quickstart` — readiness checks after auth
+- `agentclash-eval-runner`
 
 ## Related Docs
-- https://agentclash.dev/docs/getting-started/quickstart
-- https://agentclash.dev/docs/guides/use-with-ai-tools
-- https://agentclash.dev/docs/reference/cli
-- https://agentclash.dev/docs/reference/config
-- https://agentclash.dev/docs/agent-skills
+- `/docs-md/getting-started/quickstart`
+- `/docs-md/guides/use-with-ai-tools`
+- `/docs-md/reference/cli`
+- `/docs-md/reference/config`
+- `/docs-md/agent-skills`
