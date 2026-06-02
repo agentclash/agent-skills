@@ -82,18 +82,20 @@ After install, tell your agent to load **`agentclash-hub`** first. It includes:
 
 ## What's in the bundle
 
-17 skills (16 synced from main docs + hub):
+19 skills synced from main docs (hub + P0 workflow skills included):
 
 | Skill | Purpose |
 | --- | --- |
 | `agentclash-hub` | Entry point — workflow map, UI links, skill graph |
 | `agentclash-cli-setup` | Auth, workspace, config, doctor |
+| `agentclash-quickstart` | Readiness checks and next-command guidance |
 | `agentclash-runtime-resources-setup` | Providers, models, runtime, secrets |
 | `agentclash-agent-build-author` | Build specs |
 | `agentclash-agent-deployment-setup` | Deployments |
 | `agentclash-challenge-pack-*` | Plan, YAML, inputs, tools, artifacts, scoring, judges, publish |
-| `agentclash-eval-runner` | Run evals |
+| `agentclash-eval-runner` | Run evals, sessions, series |
 | `agentclash-scorecard-reader` | Read results |
+| `agentclash-compare-and-triage` | Baselines, compare, replay triage |
 | `agentclash-regression-flywheel` | Regression promotion |
 | `agentclash-ci-release-gate` | CI gates |
 
